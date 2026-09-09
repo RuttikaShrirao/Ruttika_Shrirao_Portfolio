@@ -18,7 +18,7 @@ export default function Experience() {
           description="3 years of professional engineering experience across full-stack development, analytics platforms, and AI-powered product engineering."
         />
 
-        <div className="relative max-w-3xl">
+        <div className="relative ">
           {/* Vertical line */}
           <div
             className="absolute left-[15px] top-8 bottom-0 w-px hidden md:block"

@@ -21,7 +21,7 @@ const DOMAINS = [
     color: "#7C3AED",
     bg: "rgba(124, 58, 237, 0.07)",
     border: "rgba(124, 58, 237, 0.2)",
-    techs: ["Node.js", "Express.js", "NestJS", "REST APIs", "JWT Auth"],
+    techs: ["Node.js", "Express.js", "REST APIs", "JWT Auth"],
   },
   {
     number: "03",
@@ -39,7 +39,7 @@ const DOMAINS = [
     color: "#10B981",
     bg: "rgba(16, 185, 129, 0.07)",
     border: "rgba(16, 185, 129, 0.2)",
-    techs: ["OpenAI GPT-4", "Google Gemini", "Replicate", "LangChain", "Streaming AI"],
+    techs: ["OpenAI GPT-4", "Google Gemini", "Replicate"],
   },
   {
     number: "05",
@@ -48,7 +48,7 @@ const DOMAINS = [
     color: "#F59E0B",
     bg: "rgba(245, 158, 11, 0.07)",
     border: "rgba(245, 158, 11, 0.2)",
-    techs: ["BullMQ", "Redis Queues", "Worker Threads", "Job Scheduling", "Razorpay"],
+    techs: ["BullMQ", "SQS", "Worker Threads", "Job Scheduling", "Razorpay"],
   },
   {
     number: "06",
@@ -57,7 +57,7 @@ const DOMAINS = [
     color: "#EF4444",
     bg: "rgba(239, 68, 68, 0.07)",
     border: "rgba(239, 68, 68, 0.2)",
-    techs: ["AWS EC2 / S3", "Docker", "GitHub Actions", "CI/CD", "Nginx"],
+    techs: ["AWS EC2 / S3", "Docker", "GitHub Actions", "Nginx"],
   },
 ];
 

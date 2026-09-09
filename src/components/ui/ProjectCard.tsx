@@ -39,7 +39,16 @@ export default function ProjectCard({
         initial={{ opacity: 0, y: 28 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="card card-hover rounded-2xl p-6 flex flex-col gap-4 h-full relative"
+        onClick={() => {
+          if (project.liveUrl && project.liveUrl !== "#") {
+            window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+          } else {
+            setModalOpen(true);
+          }
+        }}
+        className={`card card-hover rounded-2xl p-6 flex flex-col gap-4 h-full relative ${
+          project.liveUrl && project.liveUrl !== "#" ? "cursor-pointer" : ""
+        }`}
       >
         {/* Featured badge */}
         {index === 0 && (
@@ -107,7 +116,10 @@ export default function ProjectCard({
         {/* Action row */}
         <div className="flex items-center justify-between pt-1">
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setModalOpen(true);
+            }}
             className="flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 group"
             style={{ color: "var(--accent)" }}
             aria-label={`View ${project.title} case study`}

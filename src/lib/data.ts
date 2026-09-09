@@ -53,7 +53,7 @@ export const PROJECTS: Project[] = [
       "AdminJS",
     ],
     githubUrl: "#",
-    liveUrl: "#",
+    liveUrl: "https://www.zikhara.ai/",
     featured: true,
   },
   {
@@ -91,6 +91,7 @@ export const PROJECTS: Project[] = [
       "TypeScript",
     ],
     githubUrl: "#",
+    liveUrl:"https://www.ezytix.com/",
     featured: true,
   },
   {
@@ -129,44 +130,44 @@ export const PROJECTS: Project[] = [
     githubUrl: "#",
     featured: true,
   },
-  {
-    id: "ai-workflow-builder",
-    title: "AI Workflow Builder",
-    tag: "AI · Full Stack",
-    tagColor: "orange",
-    shortDescription:
-      "A visual, prompt-based AI workflow tool allowing non-technical users to build, chain, and execute AI-powered automation pipelines.",
-    problem:
-      "Teams wanted to automate internal workflows using AI (summarization, classification, content generation) but had no technical capability to prompt-engineer or build integrations themselves.",
-    solution:
-      "Built a node-based visual editor (React Flow) where users drag-and-drop workflow steps, configure prompts, and connect AI tasks in a visual graph. The backend executes workflows node-by-node, calling Gemini or OpenAI APIs, storing results in MongoDB, and streaming progress back to the client via SSE.",
-    architecture:
-      "React.js + React Flow (visual editor) → Node.js execution engine → Gemini / OpenAI APIs → MongoDB (workflow storage, execution logs) → SSE (real-time progress streaming).",
-    keyChallenge: [
-      "Designing a serializable workflow graph format that could represent complex branching logic and be safely executed server-side",
-      "Streaming partial AI output to the frontend in real-time without overwhelming the UI — implemented debounced SSE updates",
-      "Ensuring prompt injection safety and input validation before sending user-configured prompts to external AI APIs",
-    ],
-    impact: [
-      "Non-technical users can build and run AI workflows without engineering support",
-      "Real-time execution feedback via server-sent events",
-      "Supports multi-step AI chains with conditional branching",
-      "Gemini and OpenAI provider abstraction for model flexibility",
-    ],
-    technologies: [
-      "React.js",
-      "React Flow",
-      "Node.js",
-      "Express.js",
-      "Gemini",
-      "OpenAI",
-      "MongoDB",
-      "TypeScript",
-      "SSE",
-    ],
-    githubUrl: "#",
-    featured: true,
-  },
+  // {
+  //   id: "ai-workflow-builder",
+  //   title: "AI Workflow Builder",
+  //   tag: "AI · Full Stack",
+  //   tagColor: "orange",
+  //   shortDescription:
+  //     "A visual, prompt-based AI workflow tool allowing non-technical users to build, chain, and execute AI-powered automation pipelines.",
+  //   problem:
+  //     "Teams wanted to automate internal workflows using AI (summarization, classification, content generation) but had no technical capability to prompt-engineer or build integrations themselves.",
+  //   solution:
+  //     "Built a node-based visual editor (React Flow) where users drag-and-drop workflow steps, configure prompts, and connect AI tasks in a visual graph. The backend executes workflows node-by-node, calling Gemini or OpenAI APIs, storing results in MongoDB, and streaming progress back to the client via SSE.",
+  //   architecture:
+  //     "React.js + React Flow (visual editor) → Node.js execution engine → Gemini / OpenAI APIs → MongoDB (workflow storage, execution logs) → SSE (real-time progress streaming).",
+  //   keyChallenge: [
+  //     "Designing a serializable workflow graph format that could represent complex branching logic and be safely executed server-side",
+  //     "Streaming partial AI output to the frontend in real-time without overwhelming the UI — implemented debounced SSE updates",
+  //     "Ensuring prompt injection safety and input validation before sending user-configured prompts to external AI APIs",
+  //   ],
+  //   impact: [
+  //     "Non-technical users can build and run AI workflows without engineering support",
+  //     "Real-time execution feedback via server-sent events",
+  //     "Supports multi-step AI chains with conditional branching",
+  //     "Gemini and OpenAI provider abstraction for model flexibility",
+  //   ],
+  //   technologies: [
+  //     "React.js",
+  //     "React Flow",
+  //     "Node.js",
+  //     "Express.js",
+  //     "Gemini",
+  //     "OpenAI",
+  //     "MongoDB",
+  //     "TypeScript",
+  //     "SSE",
+  //   ],
+  //   githubUrl: "#",
+  //   featured: true,
+  // },
 ];
 
 export const EXPERIENCE: Experience[] = [
@@ -177,18 +178,17 @@ export const EXPERIENCE: Experience[] = [
     period: "2025 – Present",
     current: true,
     description:
-      "Building production-grade full-stack applications across frontend, backend, and cloud infrastructure.",
+      "Building production-grade full-stack applications across frontend, backend, and managing databases, and also deployed on AWS",
     highlights: [
-      "Designed and built REST APIs using Node.js and Express.js serving production traffic",
-      "Integrated OpenAI, Gemini, and Replicate AI APIs into a unified content generation platform",
-      "Implemented BullMQ + Redis background job queues for asynchronous, large-scale processing",
-      "Optimized MongoDB queries and indexing strategy, reducing API response times by 40%+",
-      "Integrated Razorpay payment gateway including webhooks, subscriptions, and checkout flow",
-      "Built AdminJS-powered admin interfaces for internal operations and user management",
-      "Developed React.js and Next.js frontends with responsive, accessible UI components",
-      "Deployed and managed applications on AWS; used Docker for containerized environments",
-      "Managed Git branching workflows, code reviews, and production release processes",
-      "Collaborated with product and design teams to translate business requirements into technical solutions",
+      "Built an AI-powered media platform for Amazon and other e-commerce platforms to automate marketing content generation using GPT-4, Gemini, and Replicate APIs, with scalable image-processing microservices for AI generated images, Background Removal, Image Upscaling, and Image Cleanup.",
+      "Launched a Fashion Video Generation Module using LLMs, prompt engineering, and image-to-video models.",
+      "Collaborated closely with Indian and European clients teams, ensuring efficient task delivery and effective communication that led to successful project execution.",
+      "Integrated AWS S3 and CDN for scalable file storage and fast content delivery, optimizing the serving of static assets while improving application performance and reducing server load.",
+      "Optimized MongoDB queries and backend APIs, improving overall application performance by 40% through handling data on application level. ",
+      "Built full-featured admin panels using AdminJS and React.js with role-based access control, real-time analytics dashboards.",
+      "Integrated TanStack Query (React Query) for efficient server-state management, enabling optimistic UI updates, background data sync, and elimination of redundant API calls.",
+      "Built full-stack applications from scratch using Express.js, Next.js, React, and TypeScript, transforming business requirements into scalable solutions.",
+      "Collaborated with cross-functional teams on code reviews, Git merges, conflict resolution, synchronizing branches and production deployments.",
     ],
     technologies: [
       "Node.js",

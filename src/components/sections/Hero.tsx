@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Download, Terminal, Briefcase, Mail } from "lucide-react";
+import { ArrowRight, Download, Terminal, Briefcase, Mail, Code, Server, Layers } from "lucide-react";
 import { PERSONAL } from "@/lib/data";
 
 function GithubIcon({ size = 16 }: { size?: number }) {
@@ -29,32 +30,21 @@ const FLOATING_BADGES: {
   right?: string;
   delay: number;
 }[] = [
-  { label: "React.js", top: "10%", left: "8%", delay: 0 },
-  { label: "Node.js", top: "20%", right: "4%", delay: 0.6 },
-  { label: "MongoDB", bottom: "28%", left: "4%", delay: 1.2 },
-  { label: "AWS", bottom: "15%", right: "6%", delay: 1.8 },
+  { label: "React.js", top: "8%", left: "4%", delay: 0 },
+  { label: "Node.js", top: "18%", right: "2%", delay: 0.6 },
+  { label: "MongoDB", bottom: "25%", left: "2%", delay: 1.2 },
+  { label: "AWS", bottom: "12%", right: "4%", delay: 1.8 },
 ];
-
-const API_ROUTES = [
-  { method: "GET", path: "/api/users", status: 200, ms: "24ms" },
-  { method: "POST", path: "/api/auth/login", status: 201, ms: "48ms" },
-  { method: "GET", path: "/api/products", status: 200, ms: "31ms" },
-  { method: "PUT", path: "/api/orders/:id", status: 200, ms: "62ms" },
-];
-
-const STATUS_COLOR: Record<number, string> = {
-  200: "#10B981",
-  201: "#6366F1",
-  404: "#EF4444",
-};
 
 export default function Hero() {
+  const [activeTab, setActiveTab] = useState<"frontend" | "backend">("frontend");
+
   return (
     <section className="hero-mesh min-h-screen flex items-center pt-24 pb-16">
       <div className="container-lg w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          {/* ── Left column ── */}
-          <div>
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-5 items-center">
+          {/* ── Left column: 70% width (8 cols out of 12) ── */}
+          <div className="lg:col-span-7">
             {/* Status pill */}
             <motion.div
               initial={{ opacity: 0, y: -16 }}
@@ -81,8 +71,8 @@ export default function Hero() {
               <span style={{ color: "var(--text-primary)" }}>
                 {PERSONAL.firstName}
               </span>
-              <br />
-              <span className="text-gradient-hero">Shrirao</span>
+              
+              <span className="text-gradient-hero"> Shrirao</span>
             </motion.h1>
 
             {/* Role */}
@@ -109,7 +99,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-base leading-relaxed mb-8 max-w-md"
+              className="text-base md:text-lg leading-relaxed mb-8 max-w-xl"
               style={{ color: "var(--text-secondary)" }}
             >
               Full Stack Developer with <strong style={{ color: "var(--text-primary)" }}>3+ years</strong> building production-grade MERN applications — from scalable REST APIs and AI integrations to real-time dashboards with React and Next.js.
@@ -176,12 +166,12 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right column: App card ── */}
+          {/* ── Right column: Tighter gap & taller JSON terminal card ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.25 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:block lg:col-span-5"
           >
             {/* Floating tech badges */}
             {FLOATING_BADGES.map((badge) => (
@@ -200,7 +190,7 @@ export default function Hero() {
                 transition={{ delay: 0.5 + badge.delay, duration: 0.4 }}
               >
                 <span
-                  className="px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg"
+                  className="px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
                   style={{
                     background: "var(--bg-card)",
                     border: "1px solid var(--accent-border)",
@@ -213,110 +203,92 @@ export default function Hero() {
               </motion.div>
             ))}
 
-            {/* Main app mockup card */}
+            {/* Taller JSON Response Terminal Window */}
             <div
-              className="rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-sm"
+              className="rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl"
               style={{
-                background: "linear-gradient(145deg, #1E1B4B, #312E81)",
+                background: "linear-gradient(135deg, rgba(30, 27, 75, 0.97), rgba(49, 46, 129, 0.95))",
                 border: "1px solid rgba(99, 102, 241, 0.3)",
-                boxShadow: "0 32px 80px rgba(79, 70, 229, 0.4)",
+                boxShadow: "0 24px 60px rgba(79, 70, 229, 0.22)",
               }}
             >
-              {/* Card header */}
+              {/* Window Header */}
               <div
-                className="px-5 py-3.5 flex items-center justify-between"
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+                className="px-4 py-3 flex items-center justify-between"
+                style={{
+                  backgroundColor: "rgba(15, 23, 42, 0.8)",
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+                }}
               >
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                   </div>
-                  <span className="text-xs font-semibold ml-1" style={{ color: "rgba(255,255,255,0.5)" }}>
-                    MERN · REST API
+                  <span className="text-xs font-mono text-slate-300 ml-1 font-semibold">
+                    GET /api/v1/developer/profile
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="dot-pulse" />
-                  <span className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>live</span>
-                </div>
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded text-emerald-400 bg-emerald-950/90 border border-emerald-500/40">
+                  200 OK
+                </span>
               </div>
 
-              {/* Terminal prompt */}
-              <div className="px-5 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                <div className="flex items-center gap-2 text-xs font-mono">
-                  <span style={{ color: "#A78BFA" }}>❯</span>
-                  <span style={{ color: "rgba(255,255,255,0.5)" }}>ruttika@api</span>
-                  <span style={{ color: "rgba(255,255,255,0.3)" }}>~</span>
-                  <span style={{ color: "#86EFAC" }}>$ node server.js</span>
-                  <span
-                    className="w-1.5 h-3.5 rounded-sm animate-pulse"
-                    style={{ backgroundColor: "#A78BFA" }}
-                  />
-                </div>
+              {/* Taller JSON Body with Complete Full Stack Specs */}
+              <div className="p-5 font-mono text-xs leading-relaxed space-y-1.5" style={{ color: "#E2E8F0" }}>
+                <p><span className="text-slate-400">&#123;</span></p>
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;name&quot;</span>: <span className="text-amber-300">&quot;Ruttika Shrirao&quot;</span>,
+                </p>
+                {/* <p className="pl-4">
+                  <span className="text-indigo-300">&quot;title&quot;</span>: <span className="text-amber-300">&quot;Full Stack / MERN Developer&quot;</span>,
+                </p> */}
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;experience&quot;</span>: <span className="text-amber-300">&quot;3+ Years Experience&quot;</span>,
+                </p>
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;frontend&quot;</span>: [<span className="text-emerald-300">&quot;React.js&quot;</span>, <span className="text-emerald-300">&quot;Next.js&quot;</span>, <span className="text-emerald-300">&quot;Redux&quot;</span>, <span className="text-emerald-300">&quot;Tailwind&quot;</span>],
+                </p>
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;backend&quot;</span>: [<span className="text-emerald-300">&quot;Node.js&quot;</span>, <span className="text-emerald-300">&quot;Express.js&quot;</span>, <span className="text-emerald-300">&quot;REST APIs&quot;</span>],
+                </p>
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;databases&quot;</span>: [<span className="text-purple-300">&quot;MongoDB&quot;</span>, <span className="text-purple-300">&quot;MySQL&quot;</span>, <span className="text-purple-300">&quot;Redis&quot;</span>],
+                </p>
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;cloud_devops&quot;</span>: [<span className="text-blue-300">&quot;AWS&quot;</span>, <span className="text-blue-300">&quot;Docker&quot;</span>],
+                </p>
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;background_jobs&quot;</span>:
+                  [<span className="text-amber-300">&quot;BullMQ&quot;</span>,
+                  <span className="text-amber-300">&quot;SQS&quot;</span>,
+                  <span className="text-amber-300">&quot;Async Processing&quot;</span>],
+                </p>
+                <p className="pl-4">
+                  <span className="text-indigo-300">&quot;ai_integrations&quot;</span>: [<span className="text-emerald-300">&quot;OpenAI&quot;</span>,
+                   <span className="text-emerald-300">&quot;Gemini&quot;</span>,
+                   <span className="text-emerald-300">&quot;Replicate&quot;</span>],
+                </p>
+                {/* <p className="pl-4">
+                  <span className="text-indigo-300">&quot;availability&quot;</span>: <span className="text-emerald-400 font-bold">&quot;Immediate / Open for Roles&quot;</span>
+                </p> */}
+                <p><span className="text-slate-400">&#125;</span></p>
               </div>
 
-              {/* API routes */}
-              <div className="px-5 py-4 space-y-2">
-                {API_ROUTES.map((route, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 + i * 0.12 }}
-                    className="flex items-center justify-between py-2 px-3 rounded-lg"
-                    style={{ backgroundColor: "rgba(255,255,255,0.04)" }}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span
-                        className="text-xs font-bold w-10 text-center py-0.5 rounded"
-                        style={{
-                          backgroundColor: route.method === "POST" ? "rgba(99,102,241,0.25)" : route.method === "PUT" ? "rgba(245,158,11,0.2)" : "rgba(16,185,129,0.15)",
-                          color: route.method === "POST" ? "#818CF8" : route.method === "PUT" ? "#FCD34D" : "#6EE7B7",
-                        }}
-                      >
-                        {route.method}
-                      </span>
-                      <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.65)" }}>
-                        {route.path}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>{route.ms}</span>
-                      <span
-                        className="text-xs font-bold px-1.5 py-0.5 rounded"
-                        style={{
-                          backgroundColor: `${STATUS_COLOR[route.status]}22`,
-                          color: STATUS_COLOR[route.status],
-                        }}
-                      >
-                        {route.status}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Stats footer */}
+              {/* Status Footer */}
               <div
-                className="px-5 py-4 grid grid-cols-3 gap-3"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
+                className="px-4 py-2.5 flex items-center justify-between text-xs font-mono"
+                style={{
+                  backgroundColor: "rgba(15, 23, 42, 0.88)",
+                  borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+                }}
               >
-                {[
-                  { value: "3+", label: "YRS EXP" },
-                  { value: "10+", label: "PROJECTS" },
-                  { value: "99%", label: "UPTIME" },
-                ].map((s) => (
-                  <div key={s.label} className="text-center">
-                    <div className="font-heading font-extrabold text-lg" style={{ color: "white" }}>
-                      {s.value}
-                    </div>
-                    <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>
-                      {s.label}
-                    </div>
-                  </div>
-                ))}
+                <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  REST API Endpoint
+                </span>
+                <span className="text-slate-300 font-sans font-medium">Production Payload</span>
               </div>
             </div>
           </motion.div>
