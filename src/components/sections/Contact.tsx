@@ -33,14 +33,14 @@ const CONTACT_LINKS = [
   {
     icon: LinkedinIcon,
     label: "LinkedIn",
-    value: "linkedin.com/in/yourhandle",
+    value: "https://www.linkedin.com/in/ruttikashrirao/",
     href: PERSONAL.linkedin,
     id: "contact-linkedin",
   },
   {
     icon: GithubIcon,
     label: "GitHub",
-    value: "github.com/yourhandle",
+    value: "https://github.com/RuttikaShrirao",
     href: PERSONAL.github,
     id: "contact-github",
   },

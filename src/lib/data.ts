@@ -4,11 +4,11 @@ export const PERSONAL = {
   name: "Ruttika Shrirao",
   firstName: "Ruttika",
   role: "Full Stack Developer",
-  email: "[EMAIL_ADDRESS]",
-  linkedin: "https://www.linkedin.com/in/ruttika-shrirao-881056319/",
-  github: "https://github.com/Ruttika-Shrirao",
+  email: "ruttikashrirao@gmail.com",
+  linkedin: "https://www.linkedin.com/in/ruttikashrirao/",
+  github: "https://github.com/RuttikaShrirao",
   location: "India",
-  resumeUrl: "#",
+  resumeUrl: "/Ruttika_Shrirao_SDE.pdf",
   availability: "Open to Full Stack / MERN Opportunities",
 };
 
