@@ -131,7 +131,7 @@ export default function Contact() {
                     >
                       <Icon size={18} />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <p
                         className="text-xs font-semibold uppercase tracking-wider"
                         style={{ color: "var(--text-muted)" }}
@@ -139,7 +139,7 @@ export default function Contact() {
                         {link.label}
                       </p>
                       <p
-                        className="text-sm font-medium mt-0.5"
+                        className="text-sm font-medium mt-0.5 break-all sm:break-normal"
                         style={{ color: "var(--text-primary)" }}
                       >
                         {link.value}
@@ -171,7 +171,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="card rounded-2xl p-8"
+            className="card rounded-2xl p-5 sm:p-8"
           >
             {sent ? (
               <div className="flex flex-col items-center justify-center py-12 gap-4 text-center">
